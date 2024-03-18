@@ -55,3 +55,33 @@ for (const x in str){
     }
     console.log(str);
 }
+
+// Your task is to write a script that accomplishes the following:
+// Loop through the characters of a given CSV string.
+
+str = `ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor's Assistant,26`
+let cell = [];
+let row= [];
+let cellIndicator = 0;
+for (const i in str){
+// Store each "cell" of data in a variable.
+
+// When you encounter a comma, move to the next cell.
+    if (str[i] === ','){
+        cellIndicator++;
+        continue;
+    }
+// When you encounter the "\n" sequence, move to the next "row."
+    if (str[i] === '\n'){
+        console.log(cell[0],cell[1],cell[2],cell[3]);
+        cellIndicator=0;
+        cell = [];
+        continue;
+    }
+    if (cell[cellIndicator]){
+    cell[cellIndicator] = cell[cellIndicator] + str[i];
+    }else{
+        cell[cellIndicator] = str[i];
+    }
+    
+}
